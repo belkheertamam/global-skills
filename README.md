@@ -44,7 +44,7 @@ Open your terminal and run:
 
 git clone https://github.com/belkheertamam/global-skills.git ~/.global-skills
 
-This downloads the library into a fixed location on your computer:
+This downloads the Global Skills repository into a fixed location on your computer:
 
 ~/.global-skills
 
@@ -56,10 +56,15 @@ Run:
 
 bash ~/.global-skills/scripts/install.sh
 
-After installation finishes, the terminal will tell you to reload your shell.
-Run the command shown, for example:
+This step:
+- Registers Global Skills on your system
+- Sets the `GLOBAL_SKILLS_DIR` environment variable
+- Makes the skills available globally
 
-source ~/.bashrc  
+After installation finishes, the terminal will tell you to reload your shell.
+Run **exactly the command shown in your terminal**, for example:
+
+source <USER NAME>.bashrc  
 (or `source ~/.zshrc` if you use zsh)
 
 Then verify:
@@ -106,6 +111,23 @@ If you do NOT want to push it to your project repository, add this to your `.git
 
 ------------------------------------
 
+UPDATING GLOBAL SKILLS
+----------------------
+
+Global Skills is installed **once**.
+To update it when new skills or improvements are released, run:
+
+cd ~/.global-skills  
+git pull
+
+That’s it.
+
+- No re-installation required
+- No project changes needed
+- All linked projects automatically see the updates
+
+------------------------------------
+
 USER CUSTOM SKILLS
 ------------------
 
@@ -146,6 +168,7 @@ SUMMARY
 --------
 
 - Install once
+- Update with `git pull`
 - Use everywhere
 - Works with any IDE
 - Linked to projects via a simple env file
