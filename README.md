@@ -50,40 +50,35 @@ This downloads the library into a fixed location on your computer:
 
 ------------------------------------
 
-**STEP 2: ENABLE IT GLOBALLY (ONE TIME ONLY)**
+**STEP 2: INSTALL, RELOAD, AND VERIFY (ONE TIME ONLY)**
 
 Run:
 
 bash ~/.global-skills/scripts/install.sh
 
-Then reload your terminal:
+After installation finishes, the terminal will tell you to reload your shell.
+Run the command shown, for example:
 
-source ~/.bashrc
+source ~/.bashrc  
+(or `source ~/.zshrc` if you use zsh)
 
-If you use zsh, run instead:
-
-source ~/.zshrc
-
-------------------------------------
-
-**STEP 3: CHECK THAT IT WORKED**
-
-Run:
+Then verify:
 
 echo $GLOBAL_SKILLS_DIR
 
-You should see something like:
+You should see a path like:
 
 /home/your-user/.global-skills
 
-✅ Done.
-
-Global Skills is now enabled on your machine.
+✅ Global Skills is now enabled on your machine.
 
 ------------------------------------
 
 USING GLOBAL SKILLS IN A PROJECT
 --------------------------------
+
+Each project links to Global Skills using a small environment file.
+No IDE settings are required.
 
 **STEP 1: GO TO YOUR PROJECT FOLDER**
 
@@ -97,55 +92,40 @@ Run:
 
 bash ~/.global-skills/scripts/link-project-to-global-skills.sh
 
-This creates a file in your project called:
+This creates a file in your project:
 
 .global-skills.env
 
-This file tells **any IDE or tool** where the global skills live.
+This file tells any IDE or tool where the global skills live.
 
-You do **NOT** need to configure IDE settings manually.
+⚠️ IMPORTANT:
+This file is **user-specific** and may contain local paths.
+If you do NOT want to push it to your project repository, add this to your `.gitignore`:
 
-------------------------------------
-
-RECOMMENDED IDE USAGE (FAST & SAFE)
------------------------------------
-
-For best performance, IDEs should load ONLY:
-
-- $GLOBAL_SKILLS_DIR/core
-- $GLOBAL_SKILLS_DIR/on_demand
-
-Avoid loading:
-
-- manual/
-- user_custom/
-
-Unless you explicitly need them.
+.global-skills.env
 
 ------------------------------------
 
-USER CUSTOM SKILLS (OPTIONAL)
-----------------------------
+USER CUSTOM SKILLS
+------------------
 
-user_custom/ is for **your own personal skills**.
+`user_custom/` is for **your own personal skills**.
 
 - These skills stay **local**
-- They are **NOT pushed to Git**
-- You are free to experiment
+- They are **not pushed to Git**
+- Each user can freely experiment
 
 Structure:
 
 user_custom/
-- core/
-- on_demand/
-- manual/
-
-This keeps personal work separate from shared skills.
+- core        Always available personal skills
+- on_demand   Personal skills used by context
+- manual      Personal skills used manually only
 
 ------------------------------------
 
 SKILL CATEGORIES
---------------------------------
+----------------
 
 core/
 ALWAYS active. Safe and useful everywhere.
@@ -154,10 +134,11 @@ on_demand/
 Used ONLY when the situation requires it.
 
 manual/
-NEVER auto-used. Only when you call it manually.
+NEVER auto-used.
+Accessible only when explicitly invoked.
 
 user_custom/
-Your own local skills.
+Local personal extensions of the system.
 
 ------------------------------------
 
@@ -167,6 +148,7 @@ SUMMARY
 - Install once
 - Use everywhere
 - Works with any IDE
+- Linked to projects via a simple env file
 - No duplication inside projects
 - Clean and simple structure
 - Beginner-friendly
