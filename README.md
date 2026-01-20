@@ -1,5 +1,4 @@
-GLOBAL SKILLS
-====================================
+# GLOBAL SKILLS
 
 A simple, shared **global skills library** that works with **any IDE** and **any project**
 using one stable location on your computer.
@@ -8,8 +7,7 @@ You install it **once** — then reuse it **everywhere**.
 
 ------------------------------------
 
-WHAT IS THIS?
---------------
+# WHAT IS THIS?
 
 - One global folder for skills
 - Works with any editor or IDE
@@ -20,7 +18,7 @@ WHAT IS THIS?
 ------------------------------------
 
 FOLDER STRUCTURE
-----------------
+
 
 global-skills/
 - core/            ALWAYS active skills
