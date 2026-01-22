@@ -169,7 +169,7 @@ Global skills behave as native project memory for the entire session.
 
 ---
 
-## 🔄 Updating Skills
+## 🔄 Updating Global Skills
 
 ```bash
 cd "$GLOBAL_SKILLS_DIR"
@@ -179,6 +179,69 @@ git pull
 No reinstall.  
 No relinking.  
 All projects update automatically.
+
+---
+
+## 🧩 Create a Custom Skill (No Coding Required)
+
+You can create your own local skills without writing code or touching this repository.
+
+Use your IDE AI agent (Cursor, Anti-gravity, etc.) and paste the prompt below.
+The agent will create the skill for you inside `user_custom`.
+
+```text
+You are working in a project linked to Global Skills.
+
+Your task is to create a NEW local custom skill.
+
+================================================
+USER INPUTS — FILL THESE ONLY
+================================================
+
+Skill name:
+<WRITE THE SKILL NAME HERE>
+
+Category (KEEP ONE, DELETE THE OTHER TWO):
+- core
+- on_demand
+- manual
+
+What the skill does:
+<DESCRIBE IN SIMPLE WORDS WHAT YOU WANT>
+
+Optional (if you want):
+- Extra rules or notes
+- Examples
+- Attach a file that describes the skill (use it as reference)
+
+================================================
+DO NOT CHANGE ANYTHING BELOW
+================================================
+
+Rules:
+1) Create the skill at:
+   $GLOBAL_SKILLS_DIR/user_custom/<category>/<skill_name>/
+
+2) Create a file named:
+   SKILL.md
+
+3) Structure SKILL.md with:
+   - Purpose
+   - When to use
+   - What it does
+   - Rules
+   - Examples (if any)
+
+4) If the folder already exists, create a new one with -v2 (do not overwrite).
+
+5) Do NOT modify anything outside user_custom.
+
+After creation:
+- Show the created path
+- Show the full SKILL.md content
+- Confirm no other files were modified
+- Create the files on disk
+```
 
 ---
 
