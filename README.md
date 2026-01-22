@@ -46,6 +46,30 @@ All projects connect to it.
 
 ---
 
+## 📊 Automatic Skill Usage Tracking
+
+Global Skills includes a built-in mechanism that **automatically records which skills are actually used** while you work.
+
+### What happens behind the scenes
+
+- From the **very first prompt**, a background skill called **Skill Usage Documenter** runs silently
+- It detects which global skills are activated by the AI
+- It automatically creates and maintains a file called:
+
+```
+skills-usage-document.md
+```
+
+### Where can I find it?
+
+- The file is created **inside your project**
+- You can open it at any time to see which skills were used
+- History is preserved and never rewritten
+
+This turns Global Skills into a **measurable and observable system**, not a black box.
+
+---
+
 ## 🗂 Folder Structure
 
 ```
@@ -166,9 +190,3 @@ All projects update automatically.
 - Zero duplication
 - Clean structure
 - Full control
-
----
-
-## 📜 License
-
-MIT
