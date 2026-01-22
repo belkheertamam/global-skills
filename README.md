@@ -1,204 +1,174 @@
-GLOBAL SKILLS
-=
+# 🌍 Global Skills
 
-A simple, shared **global skills library** that works with **any IDE** and **any project**
-using one stable location on your computer.
+A **global, shared skills library** for AI-assisted development.  
+Install once. Use everywhere. Any IDE. Any project.
 
-You install it **once** — then reuse it **everywhere**.
+---
 
-------------------------------------
+## 🚩 The Problem
 
-WHAT IS THIS?
--------------
+AI skills today are:
+- Duplicated across projects
+- Lost between tools
+- Hard to keep consistent
+- Painful to update
 
-- One global folder for skills
-- Works with any editor or IDE
-- Easy to install
-- Easy to link to projects
-- No copying files between projects
+Every project ends up reinventing the same logic.
 
-------------------------------------
+---
 
-FOLDER STRUCTURE
-----------------
+## 💡 The Solution
 
+**Global Skills** introduces a single, stable skills library:
+
+- One global location on your computer
+- Linked to projects (not copied)
+- Shared across all IDEs and tools
+- Updated once, applied everywhere
+
+> Think of it as **global AI memory** for your system.
+
+---
+
+## 🧠 How It Works
+
+![Global Skills – one shared skills brain](./assets/global-skills-diagram.png)
+
+### How this works (in simple terms)
+
+1. Download Global Skills **once** to your computer.
+2. Activate it so it becomes available everywhere.
+3. Link any project you want to it (Cursor, Antigravity, any IDE).
+4. All projects share the same skills automatically.
+
+One shared skills brain.  
+All projects connect to it.
+
+---
+
+## 🗂 Folder Structure
+
+```
 global-skills/
-- core/            ALWAYS active skills
-- on_demand/       Skills used ONLY when needed
-- manual/          Skills used MANUALLY only
-- user_custom/     Your personal local skills
-  - core/
-  - on_demand/
-  - manual/
-- scripts/
-- README.md
-
-------------------------------------
-
-INSTALLATION (VERY EASY)
-------------------------
-
-**STEP 1: DOWNLOAD THE LIBRARY**
-
-Open your terminal and run:
-
-git clone https://github.com/belkheertamam/global-skills.git ~/.global-skills
-
-This downloads the Global Skills repository into a fixed location on your computer:
-
-~/.global-skills
-
-------------------------------------
-
-**STEP 2: INSTALL, RELOAD, AND VERIFY (ONE TIME ONLY)**
-
-Run:
-
-bash ~/.global-skills/scripts/install.sh
-
-This step:
-- Registers Global Skills on your system
-- Sets the `GLOBAL_SKILLS_DIR` environment variable
-- Makes the skills available globally
-
-After installation finishes, the terminal will tell you to reload your shell.
-Run **exactly the command shown in your terminal**, for example:
-
-source <USER NAME>.bashrc  
-(or `source ~/.zshrc` if you use zsh)
-
-Then verify:
-
-echo $GLOBAL_SKILLS_DIR
-
-You should see a path like:
-
-/home/your-user/.global-skills
-
-✅ Global Skills is now enabled on your machine.
-
-------------------------------------
-
-USING GLOBAL SKILLS IN A PROJECT
---------------------------------
-
-Each project links to Global Skills using a small environment file.
-No IDE settings are required.
-
-**STEP 1: GO TO YOUR PROJECT FOLDER**
-
-cd my-project
-
-------------------------------------
-
-**STEP 2: LINK THE PROJECT TO GLOBAL SKILLS**
-
-Run:
-
-bash ~/.global-skills/scripts/link-project-to-global-skills.sh
-
-This creates a file in your project:
-
-.global-skills.env
-
-This file tells any IDE or tool where the global skills live.
-
-⚠️ IMPORTANT:
-This file is **user-specific** and may contain local paths.
-If you do NOT want to push it to your project repository, add this to your `.gitignore`:
-
-.global-skills.env
-
-------------------------------------
-
-**STEP 3: INITIAL PROJECT PROMPT**
------------------------------------------
-
-⚠️ You **must** paste the following prompt in your AI chat  
-**once**, as the **first message**, for the project to work correctly.
-
-PROMPT
-
-```text
-You are working on a project that is explicitly linked to a global skills system via `.global-skills.env`.
-
-Global skills (core and on-demand) must be treated as part of the project’s native reasoning baseline.
-Core skills are always active.
-On-demand skills are automatically selected by context.
-Skills must not require explicit user invocation.
-
-The Skills Usage Documenter skill must run silently from the first prompt.
-It tracks which skills are actually used and updates `skills-usage-document.md` only when meaningful changes occur.
-History must never be deleted or rewritten.
-
-Global skills must feel like native project memory.
-This behavior persists for the entire session unless explicitly overridden.
+├─ core/          # Always active, safe skills
+├─ on_demand/     # Auto-used by context
+├─ manual/        # Explicit-only, never auto
+├─ user_custom/   # Personal local skills
+│  ├─ core/
+│  ├─ on_demand/
+│  └─ manual/
+├─ scripts/
+├─ assets/
+│  └─ global-skills-diagram.png
+└─ README.md
 ```
 
-------------------------------------
+---
 
-UPDATING GLOBAL SKILLS
-----------------------
+## 🧩 Skill Categories
 
-Global Skills is installed **once**.
-To update it when new skills or improvements are released, run:
+| Category     | Behavior                  | Safety |
+|--------------|---------------------------|--------|
+| core         | Always active             | ✅ Safe |
+| on_demand    | Triggered by context      | ✅ Safe |
+| manual       | Explicit invocation only  | ⚠️ Risk |
+| user_custom  | Local personal extensions | 🧪 User |
 
-cd ~/.global-skills  
+---
+
+## ⚙️ Installation (One Time)
+
+### 1️⃣ Clone
+```bash
+git clone https://github.com/belkheertamam/global-skills.git "$HOME/.global-skills"
+```
+
+### 2️⃣ Install
+```bash
+bash "$HOME/.global-skills/scripts/install.sh"
+```
+
+### 3️⃣ Reload your shell
+
+```bash
+source ~/.bashrc
+# or
+source ~/.zshrc
+```
+
+### 4️⃣ Verify
+```bash
+echo $GLOBAL_SKILLS_DIR
+```
+
+Expected output:
+```
+$HOME/.global-skills
+```
+
+---
+
+## 🔗 Using Global Skills in a Project
+
+```bash
+cd <your-project>
+bash "$GLOBAL_SKILLS_DIR/scripts/link-project-to-global-skills.sh"
+```
+
+This creates:
+```
+.global-skills.env
+```
+
+⚠️ This file is user-specific.  
+Add it to `.gitignore` if you don’t want to commit it.
+
+---
+
+## 🧠 Required Initial Prompt (Important)
+
+Paste **once**, as the **first message** in your AI session:
+
+```text
+This project is explicitly linked to a global skills system via `.global-skills.env`.
+
+Global skills are part of the project’s native reasoning baseline.
+Core skills are always active.
+On-demand skills activate by context.
+Manual skills must never be used unless explicitly requested.
+
+The Skills Usage Documenter runs silently from the first prompt.
+It tracks actual skill usage and updates `skills-usage-document.md` without rewriting history.
+
+Global skills behave as native project memory for the entire session.
+```
+
+---
+
+## 🔄 Updating Skills
+
+```bash
+cd "$GLOBAL_SKILLS_DIR"
 git pull
+```
 
-That’s it.
+No reinstall.  
+No relinking.  
+All projects update automatically.
 
-- No re-installation required
-- No project changes needed
-- All linked projects automatically see the updates
+---
 
-------------------------------------
-
-USER CUSTOM SKILLS
-------------------
-
-`user_custom/` is for **your own personal skills**.
-
-- These skills stay **local**
-- They are **not pushed to Git**
-- Each user can freely experiment
-
-Structure:
-
-user_custom/
-- core        Always available personal skills
-- on_demand   Personal skills used by context
-- manual      Personal skills used manually only
-
-------------------------------------
-
-SKILL CATEGORIES
-----------------
-
-core/
-ALWAYS active. Safe and useful everywhere.
-
-on_demand/
-Used ONLY when the situation requires it.
-
-manual/
-NEVER auto-used.
-Accessible only when explicitly invoked.
-
-user_custom/
-Local personal extensions of the system.
-
-------------------------------------
-
-SUMMARY
---------
+## 📌 Summary
 
 - Install once
-- Update with `git pull`
-- Use everywhere
-- Works with any IDE
-- Linked to projects via a simple env file
-- No duplication inside projects
-- Clean and simple structure
-- Beginner-friendly
-- Future-proof
+- Link projects
+- Update globally
+- Zero duplication
+- Clean structure
+- Full control
+
+---
+
+## 📜 License
+
+MIT
