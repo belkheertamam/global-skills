@@ -56,9 +56,9 @@ Global Skills includes a built-in mechanism that **automatically records which s
 - It detects which global skills are activated by the AI
 - It automatically creates and maintains a file called:
 
-```
-skills-usage-document.md
-```
+
+`skills-usage-document.md`
+
 
 ### Where can I find it?
 
@@ -77,7 +77,7 @@ global-skills/
 ├─ core/          # Always active, safe skills
 ├─ on_demand/     # Auto-used by context
 ├─ manual/        # Explicit-only, never auto
-├─ user_custom/   # Personal local skills
+├─ user_custom/   # Personal local skills (ignored by git)
 │  ├─ core/
 │  ├─ on_demand/
 │  └─ manual/
@@ -100,35 +100,71 @@ global-skills/
 
 ---
 
-## ⚙️ Installation (One Time)
+## ⚙️ Installation (Linux / macOS / Windows)
 
 ### 1️⃣ Clone
+
+**Linux / macOS (Terminal):**
 ```bash
 git clone https://github.com/belkheertamam/global-skills.git "$HOME/.global-skills"
 ```
 
+**Windows (PowerShell):**
+```powershell
+git clone https://github.com/belkheertamam/global-skills.git "$env:USERPROFILE\.global-skills"
+```
+
+---
+
 ### 2️⃣ Install
+
+**Linux / macOS:**
 ```bash
 bash "$HOME/.global-skills/scripts/install.sh"
 ```
 
+**Windows (WSL or Git Bash recommended):**
+```bash
+bash "$HOME/.global-skills/scripts/install.sh"
+```
+
+> Windows users are recommended to use **WSL** or **Git Bash** for full compatibility.
+
+---
+
 ### 3️⃣ Reload your shell
 
+**Linux / macOS:**
 ```bash
 source ~/.bashrc
+```
 # or
+```
 source ~/.zshrc
 ```
 
+**Windows (WSL / Git Bash):**
+```bash
+source ~/.bashrc
+```
+
+---
+
 ### 4️⃣ Verify
+
+**Linux / macOS:**
 ```bash
 echo $GLOBAL_SKILLS_DIR
 ```
 
+**Windows (PowerShell):**
+```powershell
+echo $env:GLOBAL_SKILLS_DIR
+```
+
 Expected output:
-```
-$HOME/.global-skills
-```
+
+`~/.global-skills`
 
 ---
 
@@ -140,12 +176,8 @@ bash "$GLOBAL_SKILLS_DIR/scripts/link-project-to-global-skills.sh"
 ```
 
 This creates:
-```
-.global-skills.env
-```
 
-⚠️ This file is user-specific.  
-Add it to `.gitignore` if you don’t want to commit it.
+`.global-skills.env`
 
 ---
 
@@ -165,6 +197,42 @@ The Skills Usage Documenter runs silently from the first prompt.
 It tracks actual skill usage and updates `skills-usage-document.md` without rewriting history.
 
 Global skills behave as native project memory for the entire session.
+```
+---
+
+## ⚠️ User-Specific File (`.global-skills.env`)
+
+The file `.global-skills.env` contains **machine-specific paths**
+(e.g. your home directory on Linux, macOS, or Windows).
+
+If your project uses Git and you do **not** want to commit local paths,
+add this line to your project’s `.gitignore`:
+
+```
+.global-skills.env
+```
+---
+
+## 🤖 Alternative: Ask an AI Agent to Update `.gitignore`
+
+You may copy and paste the prompt below into your IDE’s AI agent
+(Cursor, Anti-Gravity, etc.):
+
+```text
+This project uses Global Skills.
+
+The file `.global-skills.env` contains machine-specific paths and must not be committed.
+
+Task:
+- If this project uses Git and a `.gitignore` file exists, add:
+  .global-skills.env
+- If `.gitignore` does not exist, ask before creating it.
+
+Rules:
+- Do not commit anything.
+- Do not modify any other files.
+
+Report what you changed.
 ```
 
 ---

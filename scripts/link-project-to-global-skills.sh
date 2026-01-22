@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
 if [ -z "${GLOBAL_SKILLS_DIR:-}" ]; then
   echo "ERROR: GLOBAL_SKILLS_DIR is not set."
@@ -10,8 +10,27 @@ fi
 
 TARGET_FILE=".global-skills.env"
 
-GS="$GLOBAL_SKILLS_DIR"
-UC="$GLOBAL_SKILLS_DIR/user_custom"
+# Try to resolve to absolute paths (portable fallback)
+abs_path() {
+  local p="$1"
+  if command -v realpath >/dev/null 2>&1; then
+    realpath "$p"
+  elif command -v python3 >/dev/null 2>&1; then
+    python3 - <<PY
+import os,sys
+print(os.path.abspath(sys.argv[1]))
+PY
+  else
+    # last resort
+    echo "$p"
+  fi
+}
+
+GS="$(abs_path "$GLOBAL_SKILLS_DIR")"
+UC="$(abs_path "$GLOBAL_SKILLS_DIR/user_custom")"
+
+# Ensure local folders exist (important for first-time users)
+mkdir -p "$UC/core" "$UC/on_demand" "$UC/manual"
 
 cat > "$TARGET_FILE" <<CFG
 # Auto-generated. Do not edit unless you know what you're doing.
