@@ -111,6 +111,31 @@ If you do NOT want to push it to your project repository, add this to your `.git
 
 ------------------------------------
 
+**STEP 3: INITIAL PROJECT PROMPT**
+-----------------------------------------
+
+⚠️ You **must** paste the following prompt in your AI chat  
+**once**, as the **first message**, for the project to work correctly.
+
+**PROMPT**
+
+```text
+You are working on a project that is explicitly linked to a global skills system via `.global-skills.env`.
+
+Global skills (core and on-demand) must be treated as part of the project’s native reasoning baseline.
+Core skills are always active.
+On-demand skills are automatically selected by context.
+Skills must not require explicit user invocation.
+
+The Skills Usage Documenter skill must run silently from the first prompt.
+It tracks which skills are actually used and updates `skills-usage-document.md` only when meaningful changes occur.
+History must never be deleted or rewritten.
+
+Global skills must feel like native project memory.
+This behavior persists for the entire session unless explicitly overridden.
+
+------------------------------------
+
 UPDATING GLOBAL SKILLS
 ----------------------
 
