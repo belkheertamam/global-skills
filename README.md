@@ -117,7 +117,7 @@ If you do NOT want to push it to your project repository, add this to your `.git
 ⚠️ You **must** paste the following prompt in your AI chat  
 **once**, as the **first message**, for the project to work correctly.
 
-**PROMPT**
+PROMPT
 
 ```text
 You are working on a project that is explicitly linked to a global skills system via `.global-skills.env`.
@@ -133,6 +133,7 @@ History must never be deleted or rewritten.
 
 Global skills must feel like native project memory.
 This behavior persists for the entire session unless explicitly overridden.
+```
 
 ------------------------------------
 
